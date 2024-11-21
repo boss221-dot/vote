@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Système de Gestion des Extraits de Naissance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <h1>Gestion des Extraits de Naissance</h1>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <button class="nav-btn active" data-tab="create">Créer un Extrait</button>
+    <button class="nav-btn" data-tab="scan">Numériser</button>
+    <button class="nav-btn" data-tab="list">Liste des Extraits</button>
+  </nav>
+
+  <main>
+    <div id="create" class="tab-content active">
+      <form id="birthCertificateForm" class="certificate-form">
+        <div class="form-sections">
+          <!-- Informations de base -->
+          <section class="form-section">
+            <h3>Informations de Base</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="numero">Numéro d'Extrait*</label>
+                <input type="text" id="numero" name="numero" required>
+              </div>
+              <div class="form-group">
+                <label for="registre">Numéro de Registre*</label>
+                <input type="text" id="registre" name="registre" required>
+              </div>
+            </div>
+          </section>
+
+          <!-- Informations personnelles -->
+          <section class="form-section">
+            <h3>Informations de l'Enfant</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nom">Nom*</label>
+                <input type="text" id="nom" name="nom" required>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom(s)*</label>
+                <input type="text" id="prenom" name="prenom" required>
+              </div>
+              <div class="form-group">
+                <label for="sexe">Sexe*</label>
+                <select id="sexe" name="sexe" required>
+                  <option value="">Sélectionner</option>
+                  <option value="M">Masculin</option>
+                  <option value="F">Féminin</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dateNaissance">Date de Naissance*</label>
+                <input type="date" id="dateNaissance" name="dateNaissance" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="lieuNaissance">Lieu de Naissance*</label>
+                <input type="text" id="lieuNaissance" name="lieuNaissance" required>
+              </div>
+            </div>
+          </section>
+
+          <!-- Informations des parents -->
+          <section class="form-section">
+            <h3>Informations des Parents</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nomPere">Nom du Père*</label>
+                <input type="text" id="nomPere" name="nomPere" required>
+              </div>
+              <div class="form-group">
+                <label for="prenomPere">Prénom(s) du Père*</label>
+                <input type="text" id="prenomPere" name="prenomPere" required>
+              </div>
+              <div class="form-group">
+                <label for="professionPere">Profession du Père</label>
+                <input type="text" id="professionPere" name="professionPere">
+              </div>
+              <div class="form-group">
+                <label for="nationalitePere">Nationalité du Père</label>
+                <input type="text" id="nationalitePere" name="nationalitePere" value="Sénégalaise">
+              </div>
+
+              <div class="form-group">
+                <label for="nomMere">Nom de la Mère*</label>
+                <input type="text" id="nomMere" name="nomMere" required>
+              </div>
+              <div class="form-group">
+                <label for="prenomMere">Prénom(s) de la Mère*</label>
+                <input type="text" id="prenomMere" name="prenomMere" required>
+              </div>
+              <div class="form-group">
+                <label for="professionMere">Profession de la Mère</label>
+                <input type="text" id="professionMere" name="professionMere">
+              </div>
+              <div class="form-group">
+                <label for="nationaliteMere">Nationalité de la Mère</label>
+                <input type="text" id="nationaliteMere" name="nationaliteMere" value="Sénégalaise">
+              </div>
+            </div>
+          </section>
+
+          <!-- Informations administratives -->
+          <section class="form-section">
+            <h3>Informations Administratives</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="dateDeclaration">Date de Déclaration*</label>
+                <input type="date" id="dateDeclaration" name="dateDeclaration" required>
+              </div>
+              <div class="form-group">
+                <label for="declarant">Déclarant*</label>
+                <input type="text" id="declarant" name="declarant" required>
+              </div>
+              <div class="form-group">
+                <label for="pieceDeclarant">Pièce d'identité du Déclarant*</label>
+                <input type="text" id="pieceDeclarant" name="pieceDeclarant" required>
+              </div>
+              <div class="form-group">
+                <label for="officier">Officier d'État Civil*</label>
+                <input type="text" id="officier" name="officier" required>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Générer l'Extrait</button>
+          <button type="reset" class="btn-secondary">Réinitialiser</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="scan" class="tab-content">
+      <div class="scan-container">
+        <div class="upload-zone" id="dropZone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <h3>Déposez vos documents ici</h3>
+          <p>ou</p>
+          <button class="btn-primary" id="uploadBtn">Sélectionner des fichiers</button>
+          <input type="file" id="fileInput" accept="image/*,.pdf" multiple hidden>
+        </div>
+        <div id="previewZone" class="preview-zone"></div>
+      </div>
+    </div>
+
+    <div id="list" class="tab-content">
+      <div class="list-controls">
+        <input type="search" id="searchCertificates" placeholder="Rechercher un extrait...">
+        <div class="list-filters">
+          <select id="filterType">
+            <option value="">Tous les types</option>
+            <option value="manual">Manuel</option>
+            <option value="scan">Numérisé</option>
+          </select>
+          <input type="date" id="filterDate" placeholder="Date">
+        </div>
+      </div>
+      <div class="certificates-table">
+        <table id="certificatesTable">
+          <thead>
+            <tr>
+              <th>N° Extrait</th>
+              <th>Nom Complet</th>
+              <th>Date de Naissance</th>
+              <th>Type</th>
+              <th>Date de Création</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="certificatesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div id="certificatePreview" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="certificateContent"></div>
+      <button id="printCertificate" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Imprimer
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
